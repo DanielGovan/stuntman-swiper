@@ -5,27 +5,33 @@ import SwipeCard from "./SwipeCard";
 function Stack({ data }) {
   const [storedData, setStoredData] = useState(data);
   const [dragging, setDragging] = useState(false);
+  // changes styles when dragging to make it look like the card is moving
 
-  const handleDragStart = () => {
+  const handleDragStart = (e) => {
     console.log("Drag started");
+    e.target.addEventListener("dragend", handleDragEnd);
+    setTimeout(() => {
+      setDragging(true);
+    }, 0);
   };
 
-  const handleDragEnd = () => {
+  const handleDragEnd = (e) => {
     console.log("Drag ended");
+    setDragging(false);
   };
 
   return (
     <div className={styles.stack}>
-      Stack!
       {storedData
         .map((item) => (
           <SwipeCard
             draggable
+            dragging={dragging}
             key={item.id}
             name={item.name}
             image={item.image}
-            ondragstart={handleDragStart}
-            ondragend={handleDragEnd}
+            handleDragStart={handleDragStart}
+            handleDragEnd={handleDragEnd}
           />
         ))
         .reverse()}

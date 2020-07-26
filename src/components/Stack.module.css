@@ -1,9 +1,14 @@
 .stack {
+  position: relative;
   background: #aaa;
   display: block;
   height: auto;
   width: 400px;
+  height: 550px;
   margin: 0 auto;
   text-align: center;
-  overflow: hidden;
+}
+
+.dragging {
+  background: green;
 }
