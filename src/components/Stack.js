@@ -4,7 +4,7 @@ import SwipeCard from "./SwipeCard";
 
 function Stack({ data }) {
   const [currentCards, setCurrentCards] = useState(data);
-  const [chosen, setChosen] = useState([]);
+  const [keptCards, setKeptCards] = useState([]);
   const [dragging, setDragging] = useState(false);
   const [pickUp, setPickUp] = useState(0);
 
@@ -22,9 +22,9 @@ function Stack({ data }) {
 
   const handleDragEnd = (e) => {
     if (pickUp > e.clientX) {
-      handleNextCard("no");
+      handleNextCard("discard");
     } else if (pickUp < e.clientX) {
-      handleNextCard("yes");
+      handleNextCard("keep");
     }
     //resets listener and ref and state
     dragCard.current.removeEventListener("dragend", handleDragEnd);
@@ -33,32 +33,48 @@ function Stack({ data }) {
   };
 
   const handleNextCard = (pick) => {
-    if (pick == "yes") {
-      console.log("keep");
-      //setChosen([...chosen.push(currentCards[0])]);
-      //Push to kept
-    } else {
-      console.log("discard");
+    if (pick == "keep") {
+      console.log("Card kept");
+      //add top card to the kept cards
+      setKeptCards([currentCards[0], ...keptCards]);
+    } else if (pick == "discard") {
+      console.log("Card discarded");
     }
-    setCurrentCards([...currentCards.slice(1)]); //removes the top card
-    //console.log(chosen, currentCards[0]);
+    //removes the top card from current cards
+    setCurrentCards([...currentCards.slice(1)]);
   };
 
   return (
     <div className={styles.stack}>
-      {currentCards
-        .map((item) => (
-          <SwipeCard
-            draggable
-            dragging={dragging}
-            key={item.id}
-            name={item.name}
-            image={item.image}
-            handleDragStart={handleDragStart}
-            handleDragEnd={handleDragEnd}
-          />
-        ))
-        .reverse()}
+      {currentCards.length > 0 ? (
+        //this should wait for the images to load
+        currentCards
+          .map((item) => (
+            <SwipeCard
+              draggable
+              dragging={dragging}
+              key={item.id}
+              name={item.name}
+              image={item.image}
+              handleDragStart={handleDragStart}
+              handleDragEnd={handleDragEnd}
+            />
+          ))
+          .reverse()
+      ) : (
+        // if no more cards, show the ones picked, if any
+        <>
+          <p>You've seen all the cards!</p>
+          {keptCards && (
+            <>
+              You picked
+              {keptCards.map((item) => (
+                <p>{item.name}</p>
+              ))}
+            </>
+          )}
+        </>
+      )}
     </div>
   );
 }
