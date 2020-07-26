@@ -4,11 +4,22 @@
   display: block;
   height: auto;
   width: 400px;
-  height: 550px;
+  height: 580px;
   margin: 0 auto;
   text-align: center;
 }
 
-.dragging {
-  background: green;
+.buttonWrap {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+}
+
+.button {
+  padding: 10px 20px;
+  flex: 1;
+  flex-direction: row;
+  justify-content: space-evenly;
 }

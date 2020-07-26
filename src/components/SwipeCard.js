@@ -5,7 +5,7 @@ function Card({ dragging, image, name, handleDragStart }) {
   return (
     <div
       draggable
-      className={styles.card + " " + `${dragging ? styles.dragging : ""}`} //hideous, refactor
+      className={styles.card + " " + `${dragging ? styles.dragging : ""}`} // this haunts me
       onDragStart={(e) => handleDragStart(e)}
       style={{ backgroundImage: `url(${image})` }}
     >

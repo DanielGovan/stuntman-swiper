@@ -26,7 +26,7 @@ function Stack({ data }) {
     } else if (pickUp < e.clientX) {
       handleNextCard("keep");
     }
-    //resets listener and ref and state
+    //cleans up listener, ref and state
     dragCard.current.removeEventListener("dragend", handleDragEnd);
     dragCard.current = null;
     setDragging(false);
@@ -68,13 +68,32 @@ function Stack({ data }) {
           {keptCards && (
             <>
               You picked
-              {keptCards.map((item) => (
-                <p>{item.name}</p>
-              ))}
+              {
+                keptCards.map((item) => (
+                  <p>{item.name}</p>
+                ))
+                // i would have liked to have shown thumbnails too
+              }
             </>
           )}
         </>
       )}
+      <footer>
+        <div className={styles.buttonWrap}>
+          <button
+            className={styles.button}
+            onClick={() => handleNextCard("discard")}
+          >
+            No
+          </button>
+          <button
+            className={styles.button}
+            onClick={() => handleNextCard("keep")}
+          >
+            Yes
+          </button>
+        </div>
+      </footer>
     </div>
   );
 }

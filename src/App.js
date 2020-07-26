@@ -12,10 +12,6 @@ function App() {
         <h2>Position: Stunt Double</h2>
       </header>
       <Stack data={workers} />
-      <footer>
-        <span>No</span>
-        <span>Yes</span>
-      </footer>
     </div>
   );
 }
