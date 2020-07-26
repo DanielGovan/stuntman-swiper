@@ -5,7 +5,6 @@
   border-radius: 20px;
   height: 500px;
   margin: 10px auto;
-  /* max-width: 25vw; */
   overflow: hidden;
   position: absolute;
   width: 300px;
@@ -22,7 +21,15 @@
   left: 0;
 }
 
-.card:last-child {
+.card:nth-last-child(1) {
+  margin-top: -5px;
+}
+
+.card:nth-last-child(2) {
+  margin-top: 0px;
+}
+
+.card:nth-last-child(3) {
   margin-top: 5px;
 }
 

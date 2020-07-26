@@ -1,12 +1,20 @@
 .stack {
-  position: relative;
   background: #aaa;
   display: block;
-  height: auto;
-  width: 400px;
   height: 580px;
+  padding: 20px;
+  position: relative;
   margin: 0 auto;
   text-align: center;
+  width: 400px;
+}
+
+.keep {
+  background: green;
+}
+
+.discard {
+  background: red;
 }
 
 .buttonWrap {

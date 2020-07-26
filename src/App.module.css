@@ -1,5 +1,6 @@
 .app {
   margin: 0 auto;
   width: 50vw;
+  position: relative;
   max-width: 500px;
 }
