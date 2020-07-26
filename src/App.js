@@ -2,6 +2,8 @@ import React from "react";
 import styles from "./App.module.css";
 import Stack from "./components/Stack";
 
+import { workers } from "./data";
+
 function App() {
   return (
     <div className={styles.app}>
@@ -9,7 +11,7 @@ function App() {
         <h1>Holliwood Blockbuster</h1>
         <h2>Position: Stunt Double</h2>
       </header>
-      <Stack />
+      <Stack data={workers} />
       <footer>
         <span>No</span>
         <span>Yes</span>

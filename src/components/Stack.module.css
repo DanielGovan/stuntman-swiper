@@ -1,3 +1,9 @@
-.wrap {
+.stack {
   background: #aaa;
+  display: block;
+  height: auto;
+  width: 400px;
+  margin: 0 auto;
+  text-align: center;
+  overflow: hidden;
 }
